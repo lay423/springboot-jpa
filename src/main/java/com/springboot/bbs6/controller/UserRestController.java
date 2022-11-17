@@ -10,18 +10,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/users")
 @Slf4j
-public class ArticleController {
+public class UserRestController {
 
     private final UserService userService;
 
-    public ArticleController(UserService userService) {
+    public UserRestController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDto> getUser(@PathVariable Long id) {
-        ResponseDto responseDto = userService.getUser(id);
-        return ResponseEntity.ok().body(responseDto);
+        return ResponseEntity.ok().body(userService.getUser(id));
     }
 
     @PostMapping("")
