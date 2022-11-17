@@ -1,7 +1,9 @@
 package com.springboot.bbs6.domain.entity;
 
+import com.springboot.bbs6.domain.dto.ResponseDto;
 import com.springboot.bbs6.domain.dto.UserDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class User {
     @Id
     @GeneratedValue
@@ -22,5 +25,9 @@ public class User {
 
     public static UserDto of(User user) {
         return new UserDto(user.getId(), user.getUsername());
+    }
+
+    public static ResponseDto ofRes(User user) {
+        return new ResponseDto(user.getUsername());
     }
 }
