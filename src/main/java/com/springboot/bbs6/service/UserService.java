@@ -18,13 +18,17 @@ public class UserService {
 
     public ResponseDto getUser(Long id) {
         Optional<User> optUser = userRepository.findById(id);
-        User user = optUser.get();
-        ResponseDto responseDto = user.of(user, "찾았습니다.");
-        return responseDto;
+        if (optUser.isEmpty()) {
+            return new ResponseDto(id, "", "해당 id의 유저가 없습니다");
+        } else {
+            User user = optUser.get();
+            return User.of(user, "찾았습니다.");
+        }
+
     }
 
     public ResponseDto addUser(RequestDto dto) {
         User user = userRepository.save(dto.toEntity());
-        return user.of(user);
+        return User.of(user);
     }
 }
