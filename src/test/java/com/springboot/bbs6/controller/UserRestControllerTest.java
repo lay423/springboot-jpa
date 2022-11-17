@@ -40,7 +40,7 @@ class UserRestControllerTest {
 
     @Test
     @DisplayName("입력한 id로 조회실패 시")
-    void findByIdFaile() throws Exception {
+    void findByIdFailure() throws Exception {
 
         given(userService.getUser(2L)).willReturn(new ResponseDto(null, "", "해당 id의 유저가 없습니다"));
 
