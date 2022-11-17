@@ -1,7 +1,6 @@
 package com.springboot.bbs6.domain.entity;
 
 import com.springboot.bbs6.domain.dto.ResponseDto;
-import com.springboot.bbs6.domain.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,11 +22,11 @@ public class User {
     private String username;
     private String password;
 
-    public static UserDto of(User user) {
-        return new UserDto(user.getId(), user.getUsername());
-    }
 
-    public static ResponseDto ofRes(User user) {
-        return new ResponseDto(user.getUsername());
+    public static ResponseDto of(User user) {
+        return new ResponseDto(user.getId(), user.getUsername());
+    }
+    public static ResponseDto of(User user, String message) {
+        return new ResponseDto(user.getId(), user.getUsername(), message);
     }
 }

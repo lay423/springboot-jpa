@@ -2,7 +2,6 @@ package com.springboot.bbs6.controller;
 
 import com.springboot.bbs6.domain.dto.RequestDto;
 import com.springboot.bbs6.domain.dto.ResponseDto;
-import com.springboot.bbs6.domain.dto.UserDto;
 import com.springboot.bbs6.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +19,9 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> getUser(@PathVariable Long id) {
-        UserDto userDto = userService.getUser(id);
-        return ResponseEntity.ok().body(userDto);
+    public ResponseEntity<ResponseDto> getUser(@PathVariable Long id) {
+        ResponseDto responseDto = userService.getUser(id);
+        return ResponseEntity.ok().body(responseDto);
     }
 
     @PostMapping("")
